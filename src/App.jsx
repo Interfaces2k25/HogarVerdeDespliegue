@@ -18,7 +18,7 @@ function App() {
   return (
     <>
     <NavBar />
-    <Header></Header>
+    {/* <Header></Header> */}
 
       <Contenedor>
        <Routes>

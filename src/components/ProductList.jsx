@@ -6,6 +6,7 @@ import Card from "./Card";
 function ProductList({ categories }) {
   return (
     <div className="flex flex-col gap-12 w-full px-6">
+      <h1 className="contenedor__h1">NUESTROS PRODUCTOS</h1>
       {categories.map((category) => (
         <section key={category}>
           <h2 className="contenedor_h4">{category}</h2>
