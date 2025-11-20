@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Product from "../Product";
 import products from "../data/products";
+import Card from "./Card";
 
 function ProductList({ categories }) {
   return (
@@ -13,14 +14,14 @@ function ProductList({ categories }) {
             {products
               .filter((p) => p.category === category)
               .map((p) => (
-                <Link key={p.id} to={`/producto/${p.id}`}>
-                  <Product
-                    name={p.name}
-                    price={p.price}
-                    description={p.description}
-                    image={p.image}
-                  />
-                </Link>
+                <Card
+                  key={p.id}
+                  foto={p.image}
+                  nombre={p.name}
+                  to={`/producto/${p.id}`}
+                >
+                  {p.description}
+                </Card>
               ))}
           </div>
         </section>

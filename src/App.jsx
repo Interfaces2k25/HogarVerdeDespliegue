@@ -1,11 +1,10 @@
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
-import Contenedor from "./Contenedor"
-// import products from "./data/products"
-import Header from "./Header"
-import Product from "./Product"
-import { Routes, Route } from "react-router-dom";
+import Contenedor from "./Contenedor";
+import Header from "./Header";
 import ProductList from "./components/ProductList";
+import PlantDetail from "./PlantDetail";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
 function App() {
@@ -24,6 +23,7 @@ function App() {
       <Contenedor>
        <Routes>
        <Route path="/" element={<ProductList categories={categories} />} />
+       <Route path="/producto/:id" element={<PlantDetail />} />
        </Routes>
       </Contenedor>
       <Footer />
