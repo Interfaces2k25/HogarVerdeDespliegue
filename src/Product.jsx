@@ -7,7 +7,7 @@ function Product(props) {
         tabIndex={0}
         className="bg-white shadow-md overflow-hidden flex flex-col items-center text-left
                    hover:shadow-lg focus:shadow-lg focus:outline focus:outline-black
-                   transition-shadow duration-300 w-80 p-5 rounded-2xl">
+                   transition-shadow duration-300 w-80 p-5 rounded-2xl ">
 
           <figure className="w-full rounded-lg bg-amber-50 overflow-hidden">
             <img className="w-fit object-cover rounded-2xl" src={image} alt={`Foto de ${name}`} />

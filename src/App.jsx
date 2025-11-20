@@ -1,7 +1,12 @@
+import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
 import Contenedor from "./Contenedor"
-import productos from "./data/productos"
+// import products from "./data/products"
 import Header from "./Header"
 import Product from "./Product"
+import { Routes, Route } from "react-router-dom";
+import ProductList from "./components/ProductList";
+
 
 function App() {
 
@@ -13,33 +18,15 @@ function App() {
 
   return (
     <>
+    <NavBar />
     <Header></Header>
 
       <Contenedor>
-        <div className="flex flex-col gap-12 w-full px-6">
-          {categories.map((categoria) => (
-            <section key={categoria} aria-labelledby="">
-              <h2 className="contenedor_h4">
-                {categoria}
-              </h2>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {productos
-                  .filter((p) => p.category === categoria)
-                  .map((producto, index) => (
-                    <Product
-                      key={index}
-                      name={producto.name}
-                      price={producto.price}
-                      description={producto.description}
-                      image={producto.image}
-                    />
-                  ))}
-              </div>
-            </section>
-          ))}
-        </div>
+       <Routes>
+       <Route path="/" element={<ProductList categories={categories} />} />
+       </Routes>
       </Contenedor>
+      <Footer />
     </>
   );
 }

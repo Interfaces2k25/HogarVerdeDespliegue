@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './assets/styles/index.css'
 import App from './App.jsx'
 import Contenedor from './Contenedor.jsx'
+import { BrowserRouter } from "react-router-dom";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -13,7 +14,9 @@ createRoot(document.getElementById('root')).render(
     >
       Saltar a los productos
     </a>
+    <BrowserRouter>
     <App />
+    </BrowserRouter>
     </> 
   </StrictMode>,
 )

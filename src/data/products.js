@@ -1,6 +1,6 @@
 // ID'S DESORDENADOS PARA QUE EL LECTOR LEA LOS PRODUCTOS POR CATEGORÍAS
 
-const productos = [
+const products = [
   {
     id: 1,
     name: "DYPSIS LUTESCENS",
@@ -195,7 +195,7 @@ const productos = [
   },
 ];
 
-export default productos;
+export default products;
 
 
 // ID DE LOS PRODUCTOS SI LOS MOSTRASE SIN CATEGORÍAS (PARA QUE EL ELCTOR FUNCIONE)
