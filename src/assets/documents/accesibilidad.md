@@ -5,8 +5,9 @@
 - Las tarjetas incluyen `tabIndex={0}`, permitiendo acceder sin ratón.
 - Todos los elementos muestran un foco visual claro.
 
-![Tab producto](src\assets\imagenes\tab.png)
-![Tab enlace](src\assets\imagenes\tab2.png)
+![Tab producto](/imagenes/tab.png)
+![Tab enlace](/imagenes/tab2.png)
+
 
 
 ---
