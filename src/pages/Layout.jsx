@@ -1,4 +1,4 @@
-function Contenedor({ children }) {
+function Layout({ children }) {
   return (
     <>
       <main
@@ -17,5 +17,5 @@ function Contenedor({ children }) {
   );
 }
 
-export default Contenedor;
+export default Layout;
 

@@ -1,6 +1,6 @@
 function Footer() {
     return (
-      <footer className="w-full bg-[#D4DAB2] py-6 mt-10">
+      <footer className="w-full bg-[#D4DAB2] py-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:justify-between gap-6 px-6">
   
           {/* Sección de enlaces */}

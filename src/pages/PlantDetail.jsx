@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
-import products from "./data/products";
-import Bubble from './components/Bubble';
+import products from "../data/products";
+import Bubble from '../components/Bubble';
 
 function PlantDetail() {
   const { id } = useParams();
