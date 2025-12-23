@@ -2,9 +2,7 @@ import Card from "../components/Card";
 import products from "../data/products";
 import { MemoryRouter } from "react-router-dom";
 
-/**
- * Usamos algunas plantas reales como ejemplo
- */
+//Plantas como ejemplo
 const dypsis = products.find((p) => p.name === "DYPSIS LUTESCENS");
 const kalanchoe = products.find((p) => p.name === "KALANCHOE");
 const ficusBambino = products.find(

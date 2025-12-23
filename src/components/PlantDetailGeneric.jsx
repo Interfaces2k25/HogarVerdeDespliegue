@@ -1,5 +1,19 @@
 import Bubble from "./Bubble";
 
+/**
+ * PlantDetailGeneric component displays the details of a plant.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.plant - The plant object containing details.
+ * @param {string} props.plant.name - The name of the plant.
+ * @param {string} props.plant.description - The description of the plant.
+ * @param {string} props.plant.price - The price of the plant.
+ * @param {string} props.plant.image - The image path of the plant.
+ * @param {string} props.plant.information - Additional information about the plant.
+ *
+ * @returns {JSX.Element} The rendered component.
+ */
+
 function PlantDetailGeneric({ plant }) {
   if (!plant) {
     return <h1 className="mt-10 text-center">Producto no encontrado</h1>;

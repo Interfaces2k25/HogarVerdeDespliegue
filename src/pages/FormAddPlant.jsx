@@ -1,5 +1,14 @@
 import { useState } from "react";
 
+/**
+ * FormAddPlant component for adding a new plant.
+ * 
+ * This component manages the state of the form data and handles
+ * form submission with validation for required fields.
+ * 
+ * @component
+ * @returns {JSX.Element} The rendered form for adding a plant.
+ */
 function FormAddPlant(){
     const [error, setError] = useState("");
 
@@ -56,7 +65,7 @@ function FormAddPlant(){
         <div className="flex justify-center items-center min-h-screen bg-[rgba(212,218,178,1)] p-4">
             <form
             onSubmit={handleSubmit}
-            className="bg-white p-6 rounded-lg shadow-md w-full max-w-md"
+            className="w-full max-w-md p-6 bg-white rounded-lg shadow-md"
             noValidate
             >
                 <div className="text-2xl font-bold mb-6 text-[rgba(71,79,35,1)] border-b pb-2">
@@ -184,7 +193,7 @@ function FormAddPlant(){
                         Guardar
                     </button>
                     <div>
-                        {error && <p className="text-red-700 bg-red-100 px-3 py-2 rounded-lg mt-2">{error}</p>}
+                        {error && <p className="px-3 py-2 mt-2 text-red-700 bg-red-100 rounded-lg">{error}</p>}
                     </div>
                 </div>
             </form>

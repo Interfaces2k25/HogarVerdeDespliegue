@@ -2,6 +2,14 @@ import Card from "./Card";
 import SearchBar from "./SearchBar";
 import { useMemo, useState } from "react";
 
+/**
+ * ProductListGeneric component displays a list of products filtered by search term and categorized.
+ *
+ * @param {Object} props - The component props.
+ * @param {Array} props.products - The list of products to display.
+ * @param {Array} props.categories - The list of categories to filter products by.
+ * @returns {JSX.Element} The rendered component.
+ */
 function ProductListGeneric({ products = [], categories = [] }) {
   const [searchTerm, setSearchTerm] = useState("");
 

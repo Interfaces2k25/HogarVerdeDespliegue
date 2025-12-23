@@ -1,6 +1,13 @@
 import products from "../data/products";
 import ProductListGeneric from "../components/List";
 
+/**
+ * ProductList component renders a list of products and a navigation button.
+ *
+ * @param {Object} props - The component props.
+ * @param {Array} [props.categories=[]] - An optional array of categories to filter products.
+ * @returns {JSX.Element} The rendered ProductList component.
+ */
 function ProductList({ categories = [] }) {
   return (
     <>

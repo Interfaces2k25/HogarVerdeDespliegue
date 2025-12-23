@@ -19,8 +19,6 @@ function NavBar({ isAuthenticated, setIsAuthenticated }) {
 
     <header className="bg-[rgba(212,218,178,1)] text-[rgba(71,79,35,1)] p-4 shadow-lg">
 
-
-
       {/* Barra superior con logo + botón */}
       <div className="relative flex items-center justify-between">
         <img className="h-24 mx-auto" src="imagenes/LogoSinFondoHogarVerde.png" alt="Logo de HogarVerde" />
