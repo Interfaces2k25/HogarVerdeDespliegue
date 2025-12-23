@@ -1,6 +1,18 @@
 import { Link } from "react-router-dom";
 // Link para renvolver el card, navega entre rutas sin recargar la página
 
+/**
+ * Card component that displays an image, name, price, and navigates to a specified route.
+ *
+ * @param {Object} props - The properties passed to the component.
+ * @param {string} props.image - The URL of the image to display.
+ * @param {string} props.name - The name of the item.
+ * @param {string} props.price - The price of the item.
+ * @param {string} props.to - The route to navigate to when the card is clicked.
+ * @param {React.ReactNode} props.children - Optional children to display within the card.
+ *
+ * @returns {JSX.Element} The rendered Card component.
+ */
 function Card(props) {
     const { image, name, price, to } = props;
     return (
@@ -15,13 +27,13 @@ function Card(props) {
                 className="bg-[rgba(212,218,178,1)] shadow-md overflow-hidden flex flex-col items-center text-left 
             hover:shadow-lg focus-within:shadow-lg transition-shadow duration-300 w-80 p-5 rounded-2xl">
 
-                <figure className="w-full rounded-lg bg-gray-100 overflow-hidden">
+                <figure className="w-full overflow-hidden bg-gray-100 rounded-lg">
 
-                    <img className="w-80 h-90 object-cover rounded-2xl " src={image} alt={name} />
+                    <img className="object-cover w-80 h-90 rounded-2xl " src={image} alt={name} />
 
                 </figure>
                 <div>
-                    <h2 className="text-xl font-semibold text-gray-800 mb-2 pt-3">{name}</h2>
+                    <h2 className="pt-3 mb-2 text-xl font-semibold text-gray-800">{name}</h2>
                     <p>{price}</p>
                     <p>{props.children}</p>
                 </div>

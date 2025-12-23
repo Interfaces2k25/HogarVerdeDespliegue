@@ -1,6 +1,16 @@
+/**
+ * NavBar component for the application.
+ *
+ * @component
+ * @param {Object} props - The props for the component.
+ * @param {boolean} props.isAuthenticated - Indicates if the user is authenticated.
+ * @param {Function} props.setIsAuthenticated - Function to toggle the authentication state.
+ * @returns {JSX.Element} The rendered NavBar component.
+ */
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+
 
 function NavBar({ isAuthenticated, setIsAuthenticated }) {
   const [open, setOpen] = useState(false)
@@ -31,9 +41,9 @@ function NavBar({ isAuthenticated, setIsAuthenticated }) {
       </div>
 
       {/* NavBar normal en pantallas medianas y grandes, en pequeñas que se esconda */}
-      <nav className="hidden md:flex gap-8 text-lg flex-1 justify-center" aria-label="Barra de navegación">
+      <nav className="justify-center flex-1 hidden gap-8 text-lg md:flex" aria-label="Barra de navegación">
 
-        <div className="flex gap-8 text-lg flex-1 justify-center">
+        <div className="flex justify-center flex-1 gap-8 text-lg">
           <Link to="/" className="hover:underline">Inicio</Link>
           <Link to="/productlist" className="hover:underline">Listado de productos</Link>
           <Link to="/admin" className="hover:underline">Admin</Link>

@@ -1,6 +1,15 @@
+/**
+ * SearchBar component for searching items.
+ *
+ * @param {Object} props - The props for the component.
+ * @param {string} props.searchTerm - The current search term.
+ * @param {function} props.onSearchChange - Callback function to handle search term changes.
+ * @param {string} [props.placeholder="Buscar..."] - Placeholder text for the input field.
+ * @returns {JSX.Element} The rendered SearchBar component.
+ */
 function SearchBar({ searchTerm, onSearchChange, placeholder = "Buscar..." }) {
     return (
-        <div className="mb-8 w-full max-w-lg mx-auto">
+        <div className="w-full max-w-lg mx-auto mb-8">
             <label htmlFor="search-input" className="sr-only">
                 {placeholder}
             </label>
