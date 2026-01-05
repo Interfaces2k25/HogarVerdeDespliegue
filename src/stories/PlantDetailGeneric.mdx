@@ -1,0 +1,52 @@
+import { Meta, Story, Controls } from "@storybook/blocks";
+import * as Stories from "./PlantDetailGeneric.stories";
+
+<Meta of={Stories} />
+
+
+# PlantDetailGeneric
+
+El componente **PlantDetailGeneric** se utiliza para mostrar el detalle completo
+de una planta seleccionada dentro del catálogo.
+
+Presenta información relevante como la imagen, nombre, precio, descripción e
+información adicional, permitiendo al usuario consultar el producto de forma clara
+y estructurada.
+
+---
+
+## Historias del componente
+
+### Edición por campos
+
+<Story of={Stories.EditableByFields} />
+
+---
+
+### Todos los productos
+
+<Story of={Stories.AllProducts} />
+
+---
+
+### Plantas con flores
+
+<Story of={Stories.FlowerPlants} />
+
+---
+
+### Plantas pequeñas
+
+<Story of={Stories.SmallPlants} />
+
+---
+
+### Plantas medianas / grandes
+
+<Story of={Stories.MediumLargePlants} />
+
+---
+
+## Controles interactivos
+
+<Controls />

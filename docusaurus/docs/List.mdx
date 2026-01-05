@@ -1,0 +1,65 @@
+# Listado de productos
+
+El componente **List** permite visualizar un listado de productos organizados
+por categorías y filtrables mediante un buscador.
+
+Esta vista está pensada para facilitar a los usuarios la exploración del catálogo
+y la localización rápida de productos.
+
+---
+
+## 🪴 Funcionalidades principales
+
+- Visualización de productos por categorías
+- Buscador por nombre
+- Renderizado dinámico de resultados
+- Mensaje informativo cuando no hay coincidencias
+
+---
+
+## 📦 Props del componente
+
+| Propiedad   | Tipo    | Descripción                                 |
+|------------|---------|---------------------------------------------|
+| products   | Array   | Listado de productos a mostrar              |
+| categories | Array   | Categorías utilizadas para agrupar productos |
+
+---
+
+## 📚 Ejemplo de uso
+
+A continuación se muestra un **ejemplo de uso del componente**:
+
+```jsx
+<List
+  products={products}
+  categories={[
+    "Plantas con flores",
+    "Plantas pequeñas",
+    "Plantas medianas/grandes"
+  ]}
+/>
+```
+
+---
+
+## 🔍 Ejemplo con búsqueda
+
+El componente permite filtrar los productos por nombre utilizando el buscador.
+Este comportamiento se gestiona internamente mediante estado y memoización.
+
+```jsx
+<List
+  products={products}
+  categories={["Plantas con flores"]}
+/>
+```
+---
+
+## 🧭 Contexto de uso
+
+Este componente se utiliza como vista principal del catálogo de productos.
+Desde cada tarjeta, el usuario puede acceder al detalle del producto seleccionado.
+
+Su diseño modular permite reutilizarlo fácilmente con distintos conjuntos
+de datos o categorías.

@@ -1,0 +1,78 @@
+# Detalle de producto
+
+El componente **PlantDetailGeneric** permite visualizar el **detalle completo de un producto**
+del catálogo de plantas.
+
+Esta vista está pensada para que el usuario pueda consultar toda la información
+relevante de una planta seleccionada desde el listado de productos.
+
+---
+
+## 🪴 Información mostrada
+
+El detalle de producto incluye:
+
+- Imagen de la planta
+- Nombre del producto
+- Precio
+- Descripción principal
+- Información adicional o cuidados destacados
+
+Toda esta información se recibe a través de un único objeto `plant`.
+
+---
+
+## 📦 Props del componente
+
+| Propiedad | Tipo | Descripción |
+|----------|------|-------------|
+| plant | Object | Objeto con la información completa de la planta |
+| plant.name | string | Nombre de la planta |
+| plant.description | string | Descripción del producto |
+| plant.price | string | Precio |
+| plant.image | string | Ruta de la imagen |
+| plant.information | string | Información adicional o cuidados |
+
+Si el objeto `plant` no existe, el componente muestra un mensaje indicando que el
+producto no ha sido encontrado.
+
+---
+
+## 📚 Ejemplo de uso
+
+Ejemplo básico de uso del componente para mostrar el detalle de una planta:
+
+```jsx
+<PlantDetailGeneric
+  plant={{
+    id: 1,
+    name: "KALANCHOE",
+    description: "Planta con flores decorativas de fácil mantenimiento.",
+    price: "12,99 €",
+    image: "img/kalanchoe.jpg",
+    information: "Colocar en un lugar luminoso y regar moderadamente."
+  }}
+/>
+```
+
+## 🌱 Ejemplo con información adicional
+```jsx
+<PlantDetailGeneric
+  plant={{
+    id: 2,
+    name: "FICUS LYRATA",
+    description: "Planta de interior resistente y decorativa.",
+    price: "29,99 €",
+    image: "img/ficus.jpg",
+    information: "Evitar corrientes de aire y exceso de riego."
+  }}
+/>
+```
+
+## 🧭 Contexto de uso
+
+Este componente se utiliza en la vista de detalle de producto, cuando el usuario
+selecciona una planta desde el listado del catálogo.
+
+El componente se ha diseñado para ser reutilizable y desacoplado de la lógica de
+obtención de datos, facilitando su mantenimiento y escalabilidad.
