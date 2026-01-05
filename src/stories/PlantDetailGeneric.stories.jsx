@@ -12,7 +12,7 @@ export default {
     docs: {
       description: {
         component:
-          "Componente que muestra el detalle completo de una planta, incluyendo imagen, nombre, precio, descripción e información adicional.",
+          "Documentación narrativa: Componente que muestra el detalle completo de una planta, incluyendo imagen, nombre, precio, descripción e información adicional.",
       },
     },
   },
