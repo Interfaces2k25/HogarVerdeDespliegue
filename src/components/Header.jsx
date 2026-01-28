@@ -1,3 +1,4 @@
+import NavBar from './NavBar';
 /**
  * Header component that displays the title of the products.
  *
@@ -5,10 +6,10 @@
  */
 function Header() {
   return (
-    <>
-      <h1 className="contenedor__h1">NUESTROS PRODUCTOS</h1>
-    </>
-  )
+    <header>
+      <NavBar />
+    </header>
+  );
 }
 
 export default Header;

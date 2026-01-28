@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-primary: rgba(71, 79, 35, 1);
+  --color-secondary: rgba(212, 218, 178, 1);
+}
+
+
 .contenedor__h1{
   font-family: var(--heading-h1-font-family);
   font-size:  var(--heading-h1-font-size);

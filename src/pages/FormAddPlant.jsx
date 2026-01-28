@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { useCreatePlant } from "../hooks/useCreatePlant";
 
 /**
  * FormAddPlant component for adding a new plant.
@@ -9,72 +11,94 @@ import { useState } from "react";
  * @component
  * @returns {JSX.Element} The rendered form for adding a plant.
  */
-function FormAddPlant(){
-    const [errors, setErrors] = useState({
-        name: "",
-        price: "",
-        description: "",
-        category: "",
-        image: "",
-        information: "",
-      });
-      
 
-    const [formData, setFormData] = useState({
-        name: "",
-        price: "",
-        description: "",
-        category: "",
-        image: null,
-        information: ""
-    })
+const initialPlantData = {
+    name: "",
+    price: "",
+    description: "",
+    category: "",
+    image: "", // Base64
+    information: "",
+};
 
-    const handleChange = (e) => {
-        console.log(formData);
+const validatePlant = (data) => {
+    const errors = {};
 
-        const {id, type, value, checked, files} = e.target;
-        setFormData((prev) => ({
-            ...prev,
-            [id]: type === "checkbox" ? checked : type === "file" ? files[0] : value
-        }));
+    if (!data.name.trim()) errors.name = "El nombre es obligatorio.";
+    if (data.price === "" || Number(data.price) < 0)
+        errors.price = "El precio debe ser mayor o igual a 0.";
+    if (!data.description.trim())
+        errors.description = "La descripción es obligatoria.";
+    if (!data.category)
+        errors.category = "Selecciona una categoría.";
+    if (!data.image)
+        errors.image = "Debes subir una imagen.";
+    if (!data.information.trim())
+        errors.information = "La información es obligatoria.";
+
+    return errors;
+};
+
+
+
+function FormAddPlant() {
+    const [plantData, setPlantData] = useState(initialPlantData);
+    const [plantErrors, setPlantErrors] = useState({});
+
+    const navigate = useNavigate();
+    const fileInputRef = useRef(null);
+
+    // Hook personalizado
+    const { addPlant, loading, error } = useCreatePlant();
+
+    // Estado de errores
+
+    const handlePlantChange = (e) => {
+        const { id, value } = e.target;
+
+        setPlantData((prev) => ({ ...prev, [id]: value }));
+
+        if (plantErrors[id]) {
+            setPlantErrors((prev) => ({ ...prev, [id]: "" }));
+        }
     };
 
-    function handleSubmit(e) {
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setPlantData((prev) => ({ ...prev, image: reader.result }));
+        };
+        reader.readAsDataURL(file);
+    };
+
+    const handlePlantSubmit = async (e) => {
         e.preventDefault();
 
-        const newErrors = {};
+        const errors = validatePlant(plantData);
+        setPlantErrors(errors);
 
-        if(formData.name == null || formData.name === ""){
-            newErrors.name = "Debes introducir un nombre"
-        }
-        if(formData.price < 0 || formData.price === ""){
-            newErrors.price = "El precio debe de ser mayor o igual a 0"
-        }
-        if(formData.description == null || formData.description === ""){
-            newErrors.description = "Debes introducir una descripción"
-        }
-        if(formData.category == null || formData.category === ""){
-            newErrors.category = "Debes seleccionar una categoría"
-        }
-        if(!formData.image || !formData.image.name.toLowerCase().endsWith(".png")){
-            newErrors.image = "Debes importar una imagen .png"
-        }
-        if(formData.information == null || formData.information === ""){
-            newErrors.information = "Debes introducir una información"
-        }
-        setErrors(newErrors);
-        
-        if (Object.keys(newErrors).length === 0) {
-            console.log("Datos del formulario:", formData);
-          }
-    }
+        if (Object.keys(errors).length !== 0) return;
 
-    return(
+        const ok = await addPlant(plantData);
+
+        if (ok) {
+            alert(`¡La planta "${plantData.name}" se ha guardado correctamente!`);
+            setPlantData(initialPlantData);
+            if (fileInputRef.current) fileInputRef.current.value = null;
+            navigate("/productlist");
+        }
+    };
+
+
+    return (
         <div className="flex justify-center items-center min-h-screen bg-[rgba(212,218,178,1)] p-4">
             <form
-            onSubmit={handleSubmit}
-            className="w-full max-w-md p-6 bg-white rounded-lg shadow-md"
-            noValidate
+                onSubmit={handlePlantSubmit}
+                className="w-full max-w-md p-6 bg-white rounded-lg shadow-md"
+                noValidate
             >
                 <div className="text-2xl font-bold mb-6 text-[rgba(71,79,35,1)] border-b pb-2">
                     Añadir planta
@@ -82,131 +106,145 @@ function FormAddPlant(){
 
                 <div className="mb-4">
                     <label htmlFor="name"
-                    className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
+                        className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
                         Nombre de la planta:
                     </label>
 
                     <input
-                    id="name"
-                    type="text"
-                    value={formData.name}
-                    onChange={handleChange}
-                    aria-invalid={!!errors.name}
-                    required
+                        id="name"
+                        type="text"
+                        value={plantData.name}
+                        onChange={handlePlantChange}
+                        aria-invalid={!!plantErrors.name}
+                        aria-describedby={plantErrors.name ? "error-name" : undefined}
+                        required
 
-                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]">
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]">
                     </input>
-                    {errors.name && <p className="text-red-600">{errors.name}</p>}
+                    {plantErrors.name && <p className="text-red-600">{plantErrors.name}</p>}
                 </div>
 
                 <div className="mb-4">
                     <label htmlFor="price"
-                    className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
+                        className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
                         Precio de la planta:
                     </label>
 
                     <input
-                    id="price"
-                    type="number"
-                    value={formData.price}
-                    onChange={handleChange}
-                    aria-invalid={!!errors.price}
-                    required
+                        id="price"
+                        type="number"
+                        value={plantData.price}
+                        onChange={handlePlantChange}
+                        aria-invalid={!!plantErrors.price}
+                        aria-describedby={plantErrors.price ? "error-name" : undefined}
+                        required
 
-                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]">
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]">
                     </input>
-                    {errors.price && <p className="text-red-600">{errors.price}</p>}
+                    {plantErrors.price && <p className="text-red-600">{plantErrors.price}</p>}
                 </div>
 
                 <div className="mb-4">
                     <label htmlFor="description"
-                    className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
+                        className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
                         Descripción:
                     </label>
 
                     <input
-                    id="description"
-                    type="text"
-                    value={formData.description}
-                    onChange={handleChange}
-                    aria-invalid={!!errors.description}
-                    required
+                        id="description"
+                        type="text"
+                        value={plantData.description}
+                        onChange={handlePlantChange}
+                        aria-invalid={!!plantErrors.description}
+                        aria-describedby={plantErrors.description ? "error-name" : undefined}
+                        required
 
-                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]">
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]">
                     </input>
-                    {errors.description && <p className="text-red-600">{errors.description}</p>}
+                    {plantErrors.description && <p className="text-red-600">{plantErrors.description}</p>}
                 </div>
 
                 <div className="mb-4">
                     <label htmlFor="category"
-                    className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
+                        className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
                         Categoría:
                     </label>
 
                     <select
-                    id="category"
-                    name="category"
-                    value={formData.category}
-                    onChange={handleChange}
-                    aria-invalid={!!errors.category}
-                    required
+                        id="category"
+                        name="category"
+                        value={plantData.category}
+                        onChange={handlePlantChange}
+                        aria-invalid={!!plantErrors.category}
+                        aria-describedby={plantErrors.category ? "error-name" : undefined}
+                        required
 
-                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]"
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]"
                     >
                         <option value="">Selecciona una opción</option>
-                        <option value="medium/big">Plantas medianas/grandes</option>
-                        <option value="small">Plantas pequeñas</option>
-                        <option value="flower">Plantas con flores</option>
+                        <option value="Plantas medianas/grandes">Plantas medianas/grandes</option>
+                        <option value="Plantas pequeñas">Plantas pequeñas</option>
+                        <option value="Plantas con flores">Plantas con flores</option>
                     </select>
-                    {errors.category && <p className="text-red-600">{errors.category}</p>}
+                    {plantErrors.category && <p className="text-red-600">{plantErrors.category}</p>}
                 </div>
 
                 <div className="mb-4">
                     <label htmlFor="image"
-                    className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
+                        className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
                         Imagen:
                     </label>
 
                     <input
-                    id="image"
-                    type="file"
-                    onChange={handleChange}
-                    aria-invalid={!!errors.image}
-                    required
+                        id="image"
+                        type="file"
+                        onChange={handleFileChange}
+                        aria-invalid={!!plantErrors.image}
+                        aria-describedby={plantErrors.image ? "error-name" : undefined}
+                        required
 
-                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]"
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]"
                     >
                     </input>
-                    {errors.image && <p className="text-red-600">{errors.image}</p>}
+                    {plantErrors.image && <p className="text-red-600">{plantErrors.image}</p>}
                 </div>
 
                 <div className="mb-4">
                     <label htmlFor="information"
-                    className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
+                        className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
                         Información de la planta:
                     </label>
 
                     <input
-                    id="information"
-                    type="text"
-                    value={formData.information}
-                    onChange={handleChange}
-                    aria-invalid={!!errors.information}
-                    required
+                        id="information"
+                        type="text"
+                        value={plantData.information}
+                        onChange={handlePlantChange}
+                        aria-invalid={!!plantErrors.information}
+                        aria-describedby={plantErrors.information ? "error-name" : undefined}
+                        required
 
-                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]">
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]">
                     </input>
-                    {errors.information && <p className="text-red-600">{errors.information}</p>}
+                    {plantErrors.information && <p className="text-red-600">{plantErrors.information}</p>}
                 </div>
 
-                <div>
-                    <button
+
+                {error && (
+                    <p role="alert" className="mt-4 text-sm text-red-600">
+                        {error}
+                    </p>
+                )}
+
+                <button
                     type="submit"
-                    className="w-full bg-[rgba(71,79,35,1)] text-white py-2 px-4 rounded-lg font-semibold hover:bg-[#323524] focus:outline-none focus:ring-4 focus:ring-[rgba(212,218,178,1)] focus:ring-opacity-50 transition duration-150 ease-in-out"
-                    >
-                        Guardar
-                    </button>
-                </div>
+                    disabled={loading}
+                    className="w-full bg-[var(--color-primary)] text-white py-2 px-4 rounded-lg font-semibold 
+                        hover:bg-[var(--color-primary)] focus:outline-none focus:ring-4 focus:ring-[var(--color-secondary)] 
+                        focus:ring-opacity-50 transition duration-150 ease-in-out"
+                >
+                    {loading ? "Guardando..." : "Añadir Planta"}
+                </button>
             </form>
         </div>
     );

@@ -34,7 +34,7 @@ function Card(props) {
                 </figure>
                 <div>
                     <h2 className="pt-3 mb-2 text-xl font-semibold text-gray-800">{name}</h2>
-                    <p>{price}</p>
+                    <p>{price} €</p>
                     <p>{props.children}</p>
                 </div>
             </Link>
