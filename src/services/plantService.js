@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API_URL = 'http://localhost:3000/productos';
+//const API_URL = 'https://api-plantas-mongodb.onrender.com/productos';
+const API_URL = import.meta.env.VITE_API_URL + '/productos';
+//const API_URL = `${import.meta.env.VITE_API_URL}/productos`;
 
 //Mapear producto desde API al formato usado en frontend
 const mapProductoFromAPI = (p) => ({
