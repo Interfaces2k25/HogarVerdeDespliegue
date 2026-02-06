@@ -94,19 +94,19 @@ function FormAddPlant() {
 
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-[rgba(212,218,178,1)] p-4">
+        <div className="flex justify-center items-center min-h-screen bg-[var(--color-secondary)] p-4">
             <form
                 onSubmit={handlePlantSubmit}
                 className="w-full max-w-md p-6 bg-white rounded-lg shadow-md"
                 noValidate
             >
-                <div className="text-2xl font-bold mb-6 text-[rgba(71,79,35,1)] border-b pb-2">
+                <div className="text-2xl font-bold mb-6 text-[var(--color-primary)] border-b pb-2">
                     Añadir planta
                 </div>
 
                 <div className="mb-4">
                     <label htmlFor="name"
-                        className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
+                        className="block text-[var(--color-primary)] font-semibold mb-2">
                         Nombre de la planta:
                     </label>
 
@@ -119,14 +119,14 @@ function FormAddPlant() {
                         aria-describedby={plantErrors.name ? "error-name" : undefined}
                         required
 
-                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]">
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]">
                     </input>
-                    {plantErrors.name && <p className="text-red-600">{plantErrors.name}</p>}
+                    {plantErrors.name && <p className="text-[var(--color-error)]">{plantErrors.name}</p>}
                 </div>
 
                 <div className="mb-4">
                     <label htmlFor="price"
-                        className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
+                        className="block text-[var(--color-primary)] font-semibold mb-2">
                         Precio de la planta:
                     </label>
 
@@ -139,14 +139,14 @@ function FormAddPlant() {
                         aria-describedby={plantErrors.price ? "error-name" : undefined}
                         required
 
-                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]">
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]">
                     </input>
-                    {plantErrors.price && <p className="text-red-600">{plantErrors.price}</p>}
+                    {plantErrors.price && <p className="text-[var(--color-error)]">{plantErrors.price}</p>}
                 </div>
 
                 <div className="mb-4">
                     <label htmlFor="description"
-                        className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
+                        className="block text-[var(--color-primary)] font-semibold mb-2">
                         Descripción:
                     </label>
 
@@ -159,14 +159,14 @@ function FormAddPlant() {
                         aria-describedby={plantErrors.description ? "error-name" : undefined}
                         required
 
-                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]">
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]">
                     </input>
-                    {plantErrors.description && <p className="text-red-600">{plantErrors.description}</p>}
+                    {plantErrors.description && <p className="text-[var(--color-error)]">{plantErrors.description}</p>}
                 </div>
 
                 <div className="mb-4">
                     <label htmlFor="category"
-                        className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
+                        className="block text-[var(--color-primary)] font-semibold mb-2">
                         Categoría:
                     </label>
 
@@ -179,14 +179,14 @@ function FormAddPlant() {
                         aria-describedby={plantErrors.category ? "error-name" : undefined}
                         required
 
-                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]"
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
                     >
                         <option value="">Selecciona una opción</option>
                         <option value="Plantas medianas/grandes">Plantas medianas/grandes</option>
                         <option value="Plantas pequeñas">Plantas pequeñas</option>
                         <option value="Plantas con flores">Plantas con flores</option>
                     </select>
-                    {plantErrors.category && <p className="text-red-600">{plantErrors.category}</p>}
+                    {plantErrors.category && <p className="text-[var(--color-error)]">{plantErrors.category}</p>}
                 </div>
 
                 <div className="mb-4">
@@ -203,15 +203,15 @@ function FormAddPlant() {
                         aria-describedby={plantErrors.image ? "error-name" : undefined}
                         required
 
-                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]"
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
                     >
                     </input>
-                    {plantErrors.image && <p className="text-red-600">{plantErrors.image}</p>}
+                    {plantErrors.image && <p className="text-[var(--color-error)]">{plantErrors.image}</p>}
                 </div>
 
                 <div className="mb-4">
                     <label htmlFor="information"
-                        className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
+                        className="block text-[var(--color-primary)] font-semibold mb-2">
                         Información de la planta:
                     </label>
 
@@ -224,14 +224,14 @@ function FormAddPlant() {
                         aria-describedby={plantErrors.information ? "error-name" : undefined}
                         required
 
-                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(71,79,35,1)]">
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]">
                     </input>
-                    {plantErrors.information && <p className="text-red-600">{plantErrors.information}</p>}
+                    {plantErrors.information && <p className="text-[var(--color-error)]">{plantErrors.information}</p>}
                 </div>
 
 
                 {error && (
-                    <p role="alert" className="mt-4 text-sm text-red-600">
+                    <p role="alert" className="mt-4 text-sm text-[var(--color-error)]">
                         {error}
                     </p>
                 )}
