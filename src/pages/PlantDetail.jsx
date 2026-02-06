@@ -33,7 +33,7 @@ function PlantDetail() {
 
 
   if (loading) return <p className="p-4">Cargando producto...</p>;
-  if (error) return <p className="p-4 text-red-600">{error}</p>;
+  if (error) return <p className="p-4 text-[var(--color-error)]">{error}</p>;
 
 
   return (
@@ -49,7 +49,7 @@ function PlantDetail() {
 
       <button
         onClick={handleDelete}
-        className="px-4 py-2 text-white bg-red-600 rounded hover:bg-red-700"
+        className="px-4 py-2 text-white  bg-[var(--color-error)] rounded hover:bg-red-700"
       >
         Eliminar
       </button>

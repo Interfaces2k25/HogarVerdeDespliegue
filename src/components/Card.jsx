@@ -24,7 +24,7 @@ function Card(props) {
                 to={to} //Ruta de destino donde navega al hacer click
                 tabIndex={0} //Accesibilidad por tab
                 aria-label={`Abrir detalle de ${name}`}
-                className="bg-[rgba(212,218,178,1)] shadow-md overflow-hidden flex flex-col items-center text-left 
+                className="bg-[var(--color-secondary)] shadow-md overflow-hidden flex flex-col items-center text-left 
             hover:shadow-lg focus-within:shadow-lg transition-shadow duration-300 w-80 p-5 rounded-2xl">
 
                 <figure className="w-full overflow-hidden bg-gray-100 rounded-lg">

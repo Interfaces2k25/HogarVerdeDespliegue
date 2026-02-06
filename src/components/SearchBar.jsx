@@ -20,9 +20,9 @@ function SearchBar({ searchTerm, onSearchChange, placeholder = "Buscar..." }) {
                 value={searchTerm}
                 // Llama a la función proporcionada por el padre en cada cambio
                 onChange={(e) => onSearchChange(e.target.value)}
-                className="w-full p-3 border-2 border-[rgba(71,79,35,1)] rounded-lg shadow-inner
-    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition
-    duration-150 ease-in-out bg-[rgba(212,218,178,1)] text-[rgba(71,79,35,1)]" aria-label={placeholder}
+                className="w-full p-3 border-2  border-[var(--color-primary)] rounded-lg shadow-inner
+    focus:outline-none focus:ring-2 focus:ring-[var(--color-info)] focus:border-[var(--color-info)] transition
+    duration-150 ease-in-out bg-[var(--color-secondary)] text-[var(--color-primary)]" aria-label={placeholder}
             />
         </div>
     );

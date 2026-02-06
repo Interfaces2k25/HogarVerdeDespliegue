@@ -16,7 +16,7 @@ function ProductList() {
   const categories = [...new Set(products.map(p => p.category))];
 
   if (loading) return <p className="p-4">Cargando productos...</p>;
-  if (error) return <p className="p-4 text-red-600">{error}</p>;
+  if (error) return <p className="p-4 text-[var(--color-error)]">{error}</p>;
 
   return (
     <>

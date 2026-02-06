@@ -54,7 +54,7 @@ function ProductListGeneric({ products = [] }) {
 
       
       {filteredProducts.length === 0 && ( // Mensaje si no hay productos que coincidan con la búsqueda
-        <p className="mt-10 italic text-center text-red-500">
+        <p className="mt-10 italic text-center text-[var(--color-error)]">
           No hay productos que coincidan con la búsqueda
         </p>
       )}
@@ -67,7 +67,7 @@ function ProductListGeneric({ products = [] }) {
 
         return (
           <section key={category}>
-            <h2 className="pt-10 text-lg font-semibold underline text-[#474f23]">
+            <h2 className="pt-10 text-lg font-semibold underline text-[var(--color-primary)]">
               {category}
             </h2>
 

@@ -19,6 +19,7 @@ YA QUE YA VIENE INSTALADA EN TODOS LOS SISTEMAS OPERATIVOS Y NO ES UNA FUENTE EX
   /*Colores primarios y secundarios*/
   --color-primary: rgba(71, 79, 35, 1);
   --color-secondary: rgba(212, 218, 178, 1);
+  --color-bubble: #D9E3B4;
 
   /*State colors*/
   --color-error: rgba(204, 51, 0, 1);

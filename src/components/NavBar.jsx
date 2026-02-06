@@ -58,7 +58,7 @@ function NavBar() {
           ) : (
             <button
               onClick={logout}
-              className="px-4 py-2 text-white bg-red-600 rounded hover:opacity-90"
+              className="px-4 py-2 text-white bg-[var(--color-error)] rounded hover:opacity-90"
             >
               Cerrar sesión
             </button>
@@ -83,7 +83,7 @@ function NavBar() {
           ) : (
             <button
               onClick={() => { logout(); setOpen(false); }}
-              className="px-4 py-2 text-white bg-red-600 rounded"
+              className="px-4 py-2 text-white bg-[var(--color-error)] rounded"
             >
               Cerrar sesión
             </button>

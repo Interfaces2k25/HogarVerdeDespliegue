@@ -191,7 +191,7 @@ function FormAddPlant() {
 
                 <div className="mb-4">
                     <label htmlFor="image"
-                        className="block text-[rgba(71,79,35,1)] font-semibold mb-2">
+                        className="block text-[var(--color-primary)] font-semibold mb-2">
                         Imagen:
                     </label>
 
