@@ -8,7 +8,7 @@
 import React from 'react';
 function Bubble({ children }) {
     return (
-      <div className="bg-[var(--color-bubble)] text-center p-4 rounded-xl max-w-xl mx-auto mt-6">
+      <div className="bg-[#D9E3B4] text-center p-4 rounded-xl max-w-xl mx-auto mt-6">
         <p className="text-sm text-[var(--color-primary)]">{children}</p>
       </div>
     );

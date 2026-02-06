@@ -29,7 +29,7 @@ function PlantDetailGeneric({ plant }) {
         />
 
         <div className="flex-1 text-left">
-          <h1 className="text-4xl font-bold mb-6 text-[rgba(71,79,35,1)]">
+          <h1 className="text-4xl font-bold mb-6 text-[var(--color-primary)]">
             {plant.name}
           </h1>
 

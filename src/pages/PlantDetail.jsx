@@ -49,7 +49,7 @@ function PlantDetail() {
 
       <button
         onClick={handleDelete}
-        className="px-4 py-2 text-white  bg-[var(--color-error)] rounded hover:bg-red-700"
+        className="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-700"
       >
         Eliminar
       </button>
